@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { E164Number } from 'libphonenumber-js/core';
 import Image from 'next/image';
-import ReactDatePicker from 'react-datepicker';
+
 import { Control } from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 
@@ -16,16 +16,8 @@ import {
 import { Input } from './ui/input';
 import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select';
 import { Textarea } from './ui/textarea';
-
-export enum FormFieldType {
-	INPUT = 'input',
-	TEXTAREA = 'textarea',
-	PHONE_INPUT = 'phoneInput',
-	CHECKBOX = 'checkbox',
-	DATE_PICKER = 'datePicker',
-	SELECT = 'select',
-	SKELETON = 'skeleton',
-}
+import DatePicker from 'react-datepicker';
+import { FormFieldType } from './forms/PatientForm';
 
 interface CustomProps {
 	control: Control<any>;
@@ -118,7 +110,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
 						className='ml-2'
 					/>
 					<FormControl>
-						<ReactDatePicker
+						<DatePicker
 							showTimeSelect={props.showTimeSelect ?? false}
 							selected={field.value}
 							onChange={(date: Date | null) => field.onChange(date)}
