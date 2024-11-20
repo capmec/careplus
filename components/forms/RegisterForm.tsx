@@ -24,7 +24,7 @@ import { Form, FormControl } from '@/components/ui/form';
 import CustomFormField from '@/components/CustomFormField';
 import SubmitButton from '../SubmitButton';
 import { BaseSyntheticEvent, useState } from 'react';
-import { UserFormValidation } from '@/lib/validation';
+import { PatientFormValidation, UserFormValidation } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/lib/actions/patient.actions';
 import { FormFieldType } from './PatientForm';
@@ -40,7 +40,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	// 1. Define your form.
-	const form = useForm<z.infer<typeof UserFormValidation>>({
+	const form = useForm<z.infer<typeof PatientFormValidation>>({
 		resolver: zodResolver(UserFormValidation),
 		defaultValues: {
 			name: '',
